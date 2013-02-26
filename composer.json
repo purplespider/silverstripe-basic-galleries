@@ -1,5 +1,5 @@
 {
-	"name": "silverstripe/basic-galleries",
+	"name": "purplespider/basic-galleries",
 	"description": "Basic Photo Gallery functionality",
 	"type": "silverstripe-module",
 	"keywords": ["silverstripe", "photo", "gallery", "image", "bulk"],
