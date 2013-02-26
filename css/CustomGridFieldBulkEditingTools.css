@@ -1,0 +1,12 @@
+div#bulkEditTools
+{
+	margin: 0;
+	text-align: right;
+	
+}
+
+#bulkImageUploadGFButton {
+	font-size: 150% !important;
+	margin: 0 0 10px 0 !important;
+	float: left !important;
+}

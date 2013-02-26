@@ -1,0 +1,16 @@
+{
+	"name": "silverstripe/basic-galleries",
+	"description": "Basic Photo Gallery functionality",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "photo", "gallery", "image", "bulk"],
+		"authors": [{
+			"name": "James Cocker",
+			"email": "ssmodules@pswd.biz"
+	}],
+	"require": {
+		"silverstripe/framework": "3.*",
+		"silverstripe/cms": "3.*",
+		"colymba/gridfield-bulk-editing-tools": "dev-master",
+		"undefinedoffset/sortablegridfield": "dev-master"
+	}
+}
