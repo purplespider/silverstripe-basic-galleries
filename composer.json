@@ -10,7 +10,7 @@
 	"require": {
 		"silverstripe/framework": "3.*",
 		"silverstripe/cms": "3.*",
-		"undefinedoffset/sortablegridfield": "@dev",
-		"colymba/gridfield-bulk-editing-tools": "@dev"
+		"undefinedoffset/sortablegridfield": "*@dev",
+		"colymba/gridfield-bulk-editing-tools": "*@dev"
 	}
 }
