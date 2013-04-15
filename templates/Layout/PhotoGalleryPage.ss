@@ -4,7 +4,7 @@
 
 <% if PhotoGalleryImages %>
 	
-	<p style="margin-bottom:5px;"><strong>Click on a thumbnail to enlarge:</strong></p>
+	<p style="margin-bottom:5px;"><strong>Click on a thumbnail to enlarge.</strong> Pressing the spacebar while viewing an image shall start a slideshow.</p>
 	
 	<% loop PhotoGalleryImages %>
 		
