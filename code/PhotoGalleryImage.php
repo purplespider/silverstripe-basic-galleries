@@ -4,7 +4,7 @@ class PhotoGalleryImage extends DataObject {
  
 	public static $db = array(	
 		'SortOrder' => 'Int',
-		'Title' => 'Varchar'
+		'Title' => 'Text'
 	);
 	
 	public static $has_one = array(
