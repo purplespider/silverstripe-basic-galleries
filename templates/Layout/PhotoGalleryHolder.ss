@@ -2,6 +2,30 @@
 
 $Content
 
+<% if ChildHolders %>
+	<h2>Gallery Collections</h2>
+		
+		<% loop ChildHolders %>
+			<% if AllGalleries %>
+				<% if AllGalleries.First.PhotoGalleryImages %>
+					<% with AllGalleries.First.PhotoGalleryImages.First %>
+					<div class="gallerythumb">
+						<p><a href="$PhotoGalleryPage.Parent.Link"><img src="$Thumb.URL" width="$Thumb.Width" height="$Thumb.Height" /></a></p>
+						<p><a href="$PhotoGalleryPage.Parent.Link">$PhotoGalleryPage.Parent.Title</a></p>
+					</div>
+					<% end_with %>
+				<% end_if %>
+			<% end_if %>
+		<% end_loop %>
+		
+	<div class="clear"></div>
+	
+	<% if Galleries %>
+		<h2>Other Galleries</h2>
+	<% end_if %>
+	
+<% end_if %>
+
 <% if Galleries %>
 		<% loop Galleries %>
 			<% if PhotoGalleryImages %>

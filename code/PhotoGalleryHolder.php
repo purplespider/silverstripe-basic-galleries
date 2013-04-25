@@ -13,6 +13,14 @@ class PhotoGalleryHolder extends Page {
 			new LiteralField("addnew","<p><a href='/admin/pages/add/AddForm?action_doAdd=1&ParentID=".$this->ID."&PageType=PhotoGalleryPage&SecurityID=".SecurityToken::getSecurityID()."' class='ss-ui-button ss-ui-action-constructive ui-button' style='font-size:130%' data-icon=add''>New Photo Gallery</span></a></p>"),'Title');
 	    return $fields;
 	 }
+	
+	function ChildHolders() {
+		return PhotoGalleryHolder::get()->filter(array("ParentID"=>$this->ID));
+	}
+	
+	function AllGalleries() {
+		return PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID));
+	}
 	 
 }
 
@@ -26,11 +34,12 @@ class PhotoGalleryHolder_Controller extends Page_Controller {
       }
       parent::init();  
    }
-
-	function Galleries() {
+   
+   function Galleries() {
 		$list = new PaginatedList(PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID)), $this->request);
 		$list->setPageLength(10);
 		return $list;
 	}
+	
 	
 }
