@@ -10,7 +10,7 @@ class PhotoGalleryHolder extends Page {
 		$fields = parent::getCMSFields();
 		
 		$fields->addFieldToTab('Root.Main',
-			new LiteralField("addnew","<p><a href='/admin/pages/add/AddForm?action_doAdd=1&ParentID=".$this->ID."&PageType=PhotoGalleryPage&SecurityID=".SecurityToken::getSecurityID()."' class='ss-ui-button ss-ui-action-constructive ui-button' style='font-size:130%' data-icon=add''>New Photo Gallery</span></a></p>"),'Title');
+			new LiteralField("addnew","<p><a href='".Director::absoluteBaseURL()."admin/pages/add/AddForm?action_doAdd=1&ParentID=".$this->ID."&PageType=PhotoGalleryPage&SecurityID=".SecurityToken::getSecurityID()."' class='ss-ui-button ss-ui-action-constructive ui-button' style='font-size:130%' data-icon=add''>New Photo Gallery</span></a></p>"),'Title');
 	    return $fields;
 	 }
 	
