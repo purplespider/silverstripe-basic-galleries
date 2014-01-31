@@ -2,22 +2,22 @@
  
 class PhotoGalleryImage extends DataObject {
  
-	public static $db = array(	
+	private static $db = array(	
 		'SortOrder' => 'Int',
 		'Title' => 'Varchar(255)'
 	);
 	
-	public static $has_one = array(
+	private static $has_one = array(
 		'Image' => 'Image',
 		'PhotoGalleryPage' => 'PhotoGalleryPage'
 	);
 	
-	public static $summary_fields = array( 
+	private static $summary_fields = array( 
 	   'Title' => 'Caption',
 	   'Thumbnail' => 'Thumbnail'     
 	);
 
-	static $default_sort = "SortOrder ASC";
+	private static $default_sort = "SortOrder ASC";
 
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();

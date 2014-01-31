@@ -2,16 +2,16 @@
 
 class PhotoGalleryPage extends Page {
 	
-	static $description = "A page including a photo gallery and the ability to bulk upload images";
-	static $icon = 'basic-galleries/images/gallery';
-	static $singular_name = "Photo Gallery";
+	private static $description = "A page including a photo gallery and the ability to bulk upload images";
+	private static $icon = 'basic-galleries/images/gallery';
+	private static $singular_name = "Photo Gallery";
 	
 	// One gallery page has many gallery images
-	public static $has_many = array(
+	private static $has_many = array(
     	'PhotoGalleryImages' => 'PhotoGalleryImage'
   	);
   	
-  	static $defaults = array(
+  	private static $defaults = array(
 		'ShowInMenus' => false
 	);
 	

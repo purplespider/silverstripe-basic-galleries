@@ -2,9 +2,9 @@
 
 class PhotoGalleryHolder extends Page {
 
-	static $description = "Container for individual Photo Gallery Pages";
-	static $singular_name = "Photo Gallery Holder";
-	static $icon = 'basic-galleries/images/holder';
+	private static $description = "Container for individual Photo Gallery Pages";
+	private static $singular_name = "Photo Gallery Holder";
+	private static $icon = 'basic-galleries/images/holder';
 	
 	function getCMSFields() {
 		$fields = parent::getCMSFields();
