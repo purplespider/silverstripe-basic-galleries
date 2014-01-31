@@ -25,7 +25,6 @@ class PhotoGalleryPage extends Page {
 		}
 	    
 		$gridFieldConfig = GridFieldConfig_RecordEditor::create();
-		$gridFieldConfig->addComponent(new CustomGridFieldBulkEditingTools());
 		$gridFieldConfig->addComponent(new GridFieldBulkImageUpload());
 		
 		$gridFieldConfig->getComponentByType('GridFieldBulkImageUpload')->setConfig('folderName', "Managed/PhotoGalleries/".$this->ID."-".$this->URLSegment);
