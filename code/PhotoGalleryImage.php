@@ -13,7 +13,7 @@ class PhotoGalleryImage extends DataObject {
 	);
 	
 	public static $summary_fields = array( 
-	   'Title' => 'Title',
+	   'Title' => 'Caption',
 	   'Thumbnail' => 'Thumbnail'     
 	);
 
@@ -22,6 +22,7 @@ class PhotoGalleryImage extends DataObject {
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		
+		$fields->renameField("Title","Caption");
 		$fields->removeFieldFromTab("Root.Main","SortOrder");
 		$fields->removeFieldFromTab("Root.Main","PhotoGalleryPageID");
 		
