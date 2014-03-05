@@ -47,7 +47,7 @@ class PhotoGalleryPage extends Page {
   	function onBeforeWrite() {
 			
 		// Move to Photo Gallery Holder if created under something else
-		if ($this->Parent()->ClassName != "PhotoGalleryHolder") {
+		if ($this->Parent()->ClassName != "PhotoGalleryHolder" && PhotoGalleryHolder::get()->count() > 0) {
 			$this->ParentID = PhotoGalleryHolder::get()->first()->ID;
 		}		
 					
