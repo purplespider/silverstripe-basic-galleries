@@ -25,9 +25,9 @@ class PhotoGalleryPage extends Page {
 		}
 	    
 		$gridFieldConfig = GridFieldConfig_RecordEditor::create();
-		$gridFieldConfig->addComponent(new GridFieldBulkImageUpload());
+		$gridFieldConfig->addComponent(new GridFieldBulkUpload());
 		$gridFieldConfig->addComponent(new GridFieldGalleryTheme('Image'));
-		$gridFieldConfig->getComponentByType('GridFieldBulkImageUpload')->setConfig('folderName', "Managed/PhotoGalleries/".$this->ID."-".$this->URLSegment);
+		$gridFieldConfig->getComponentByType('GridFieldBulkUpload')->setConfig('folderName', "Managed/PhotoGalleries/".$this->ID."-".$this->URLSegment);
 		
 		$gridFieldConfig->removeComponentsByType('GridFieldPaginator');
 		$gridFieldConfig->addComponent(new GridFieldSortableRows('SortOrder'));
