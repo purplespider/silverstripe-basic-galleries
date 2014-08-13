@@ -1,53 +1,12 @@
 .bulkUpload .ss-uploadfield-item-name b:after {
 	content: ":";
 }
-.bulkManagerOptions {
-	display: none;
-}
-
-
-.bulkUpload .component div.ss-uploadfield .colymba-bulkupload-buttons .colymba-bulkupload-info {
-	color: #fff !important;
-}
-
-.ss-uploadfield .ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .size {
-	color: #989898 !important;
-}
-
-div.colymba-bulkupload-buttons button#action_Cancel.bulkUploadCancelButton {
-	display: none;
-}
-
-.bulkUpload .component div.ss-uploadfield .ss-uploadfield-addfile .ss-uploadfield-item-info .ss-uploadfield-item-name {
-	margin-bottom: 5px !important;
-}
-
-.bulkUpload .component div.ss-uploadfield .ss-uploadfield-files .ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .ss-uploadfield-item-status.ui-state-success-text {
-	/*color: #9ffa9d !important;*/
-}
-
-.bulkUpload .component div.ss-uploadfield .ss-uploadfield-files {
-	background-color: #fff !important;
-}
-
-.bulkUpload .component div.ss-uploadfield .ss-uploadfield-files .ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .name {
-	color: #000 !important;
-}
-
+.bulkManagerOptions,
+div.colymba-bulkupload-buttons button#action_Cancel.bulkUploadCancelButton,
 .bulkUpload .component div.ss-uploadfield .ss-uploadfield-files .ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .size {
-	display:none !important;
+	display: none !important;
 }
 
-.bulkUpload .component div.ss-uploadfield .ss-uploadfield-files .ss-uploadfield-item .ss-uploadfield-item-info .ss-uploadfield-item-name .ss-uploadfield-item-status.ui-state-success-text {
-    background-color: #298530;
-    border-radius: 10px;
-    color: #fff !important;
-    font-size: 95%;
-    height: 10px;
-    line-height: 1;
-    margin: 10px;
-    padding: 5px 8px;
-}
 
 .bulkEditingFieldHolder h4 a {
 	text-decoration: none !important;
@@ -62,9 +21,5 @@ div.colymba-bulkupload-buttons button#action_Cancel.bulkUploadCancelButton {
 }
 
 #Form_BulkEditingForm .bulkEditToggle {
-	display: none !important;
-}
-
-.colymba-bulkupload-buttons #action_ClearError {
 	display: none !important;
 }

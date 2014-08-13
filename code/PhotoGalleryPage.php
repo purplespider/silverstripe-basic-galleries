@@ -25,17 +25,31 @@ class PhotoGalleryPage extends Page {
 		}
 	    
 		$gridFieldConfig = GridFieldConfig_RecordEditor::create();
-		$gridFieldConfig->addComponent(new GridFieldBulkImageUpload());
+		$gridFieldConfig->addComponent(new GridFieldBulkUpload());
+		$gridFieldConfig->addComponent(new GridFieldBulkManager());
 		$gridFieldConfig->addComponent(new GridFieldGalleryTheme('Image'));
-		$gridFieldConfig->getComponentByType('GridFieldBulkImageUpload')->setConfig('folderName', "Managed/PhotoGalleries/".$this->ID."-".$this->URLSegment);
+		$bulkUpload = $gridFieldConfig->getComponentByType('GridFieldBulkUpload');
+		$bulkUpload->setConfig('folderName', "Managed/PhotoGalleries/".$this->ID."-".$this->URLSegment);
+		$bulkUpload->setConfig('canAttachExisting',false);
+		$bulkUpload->setConfig('canPreviewFolder',false);
 		
 		$gridFieldConfig->removeComponentsByType('GridFieldPaginator');
 		$gridFieldConfig->addComponent(new GridFieldSortableRows('SortOrder'));
-		$gridFieldConfig->addComponent(new GridFieldPaginator(30)); 
+		$gridFieldConfig->addComponent(new GridFieldPaginator(100)); 
 		$gridFieldConfig->removeComponentsByType('GridFieldAddNewButton');
 		
 		$gridfield = new GridField("PhotoGalleryImages", "Image Gallery", $this->PhotoGalleryImages()->sort("SortOrder"), $gridFieldConfig);
 		$fields->addFieldToTab('Root.ImageGallery', $gridfield);
+
+		$fields->addFieldToTab('Root.ImageGallery', new LiteralField('help',"
+			<h2>To upload new images:</h2>
+			<ol>
+			<li>1. Click the <strong>From your computer</strong> button above.</li>
+			<li>2. <strong>Locate and select</strong> the image(s) you wish to upload.</li>
+			<li>3. Click on <strong>Open/Choose</strong> and the image(s) will begin to upload.</li>
+			<li>4. If you wish to add several image captions, then once all the images have all uploaded, click on the <strong>Edit all</strong> button.</li>
+			<li>5. Click <strong>Finish</strong>.</li> 
+			</ol>"));
 		
 		$fields->renameField("Content", "Intro Text");
 		
