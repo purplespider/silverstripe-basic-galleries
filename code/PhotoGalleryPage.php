@@ -26,7 +26,6 @@ class PhotoGalleryPage extends Page {
 	    
 		$gridFieldConfig = GridFieldConfig_RecordEditor::create();
 		$gridFieldConfig->addComponent(new GridFieldBulkUpload());
-		$gridFieldConfig->addComponent(new GridFieldBulkManager());
 		$gridFieldConfig->addComponent(new GridFieldGalleryTheme('Image'));
 		$bulkUpload = $gridFieldConfig->getComponentByType('GridFieldBulkUpload');
 		$bulkUpload->setUfSetup('setFolderName', "Managed/PhotoGalleries/".$this->ID."-".$this->URLSegment);
@@ -47,11 +46,10 @@ class PhotoGalleryPage extends Page {
 			<li>1. Click the <strong>From your computer</strong> button above.</li>
 			<li>2. <strong>Locate and select</strong> the image(s) you wish to upload.</li>
 			<li>3. Click on <strong>Open/Choose</strong> and the image(s) will begin to upload.</li>
-			<li>4. If you wish to add several image captions, then once all the images have all uploaded, click on the <strong>Edit all</strong> button.</li>
-			<li>5. Click <strong>Finish</strong>.</li> 
+			<li>4. Click <strong>Finish</strong>.</li> 
 			</ol>"));
 		
-		$fields->renameField("Content", "Intro Text");
+		$fields->renameField("Content", "Top Content");
 		
 		return $fields;
 		
