@@ -29,9 +29,9 @@ class PhotoGalleryPage extends Page {
 		$gridFieldConfig->addComponent(new GridFieldBulkManager());
 		$gridFieldConfig->addComponent(new GridFieldGalleryTheme('Image'));
 		$bulkUpload = $gridFieldConfig->getComponentByType('GridFieldBulkUpload');
-		$bulkUpload->setConfig('folderName', "Managed/PhotoGalleries/".$this->ID."-".$this->URLSegment);
-		$bulkUpload->setConfig('canAttachExisting',false);
-		$bulkUpload->setConfig('canPreviewFolder',false);
+		$bulkUpload->setUfSetup('setFolderName', "Managed/PhotoGalleries/".$this->ID."-".$this->URLSegment);
+		$bulkUpload->setUfConfig('canAttachExisting',false);
+		$bulkUpload->setUfConfig('canPreviewFolder',false);
 		
 		$gridFieldConfig->removeComponentsByType('GridFieldPaginator');
 		$gridFieldConfig->addComponent(new GridFieldSortableRows('SortOrder'));

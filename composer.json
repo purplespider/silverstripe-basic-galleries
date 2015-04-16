@@ -11,7 +11,7 @@
 		"silverstripe/framework": "~3.1",
 		"silverstripe/cms": "~3.1",
 		"undefinedoffset/sortablegridfield": "*",
-		"colymba/gridfield-bulk-editing-tools": "2.0.*",
+		"colymba/gridfield-bulk-editing-tools": "2.1.*",
 		"colymba/gridfield-gallery-theme": "1.0.*"
 	}
 }
