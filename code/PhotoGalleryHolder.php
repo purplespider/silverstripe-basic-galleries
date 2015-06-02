@@ -36,7 +36,7 @@ class PhotoGalleryHolder_Controller extends Page_Controller {
    }
    
    function Galleries() {
-		$list = new PaginatedList(PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID)), $this->request);
+		$list = new PaginatedList(PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID))->sort("Created DESC"), $this->request);
 		$list->setPageLength(10);
 		return $list;
 	}
