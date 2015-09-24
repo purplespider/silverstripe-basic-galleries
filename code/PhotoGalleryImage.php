@@ -9,7 +9,7 @@ class PhotoGalleryImage extends DataObject {
 	
 	private static $has_one = array(
 		'Image' => 'Image',
-		'PhotoGalleryPage' => 'PhotoGalleryPage'
+		'PhotoGalleryPage' => 'Page'
 	);
 	
 	private static $summary_fields = array( 

@@ -1,3 +1,6 @@
 LeftAndMain:
     extra_requirements_css:
         - basic-galleries/css/cms.css
+PhotoGalleryPage:
+    extensions:
+        - PhotoGalleryExtension
