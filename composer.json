@@ -2,11 +2,16 @@
 	"name": "purplespider/basic-galleries",
 	"description": "Basic Photo Gallery functionality",
 	"type": "silverstripe-module",
+	"homepage": "https://github.com/purplespider/silverstripe-basic-galleries",
 	"keywords": ["silverstripe", "photo", "gallery", "image", "bulk"],
-		"authors": [{
+	"license": "BSD-3-Clause",
+	"authors": [{
 			"name": "James Cocker",
 			"email": "ssmodules@pswd.biz"
 	}],
+	"support": {
+		"issues": "https://github.com/purplespider/silverstripe-basic-galleries/issues"
+	},
 	"require": {
 		"silverstripe/framework": "~3.1",
 		"silverstripe/cms": "~3.1",
