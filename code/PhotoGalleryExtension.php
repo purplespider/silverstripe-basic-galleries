@@ -17,7 +17,7 @@ class PhotoGalleryExtension extends DataExtension {
 		$bulkUpload->setUfConfig('canAttachExisting',false);
 		$bulkUpload->setUfConfig('canPreviewFolder',false);
 		$bulkUpload->setUfConfig('overwriteWarning', false); // Required to ensure upload order is consistent
-		$bulkUpload->setConfig('sequentialUploads', true);
+		$bulkUpload->setUfConfig('sequentialUploads', true);
 		
 		$gridFieldConfig->removeComponentsByType('GridFieldPaginator');
 		$gridFieldConfig->addComponent(new GridFieldSortableRows('SortOrder'));
