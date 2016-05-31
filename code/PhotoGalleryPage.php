@@ -19,6 +19,8 @@ class PhotoGalleryPage extends Page
               if ($this->PhotoGalleryImages()->exists()) {
                   $fields->insertBefore(new Tab('ImageGallery'), 'Main');
               }
+							$fields->renameField("Content", "Top Content");
+							
             });
 
         $fields = parent::getCMSFields();

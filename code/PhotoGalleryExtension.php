@@ -36,9 +36,7 @@ class PhotoGalleryExtension extends DataExtension
 			<li>3. Click on <strong>Open/Choose</strong> and the image(s) will begin to upload.</li>
 			<li>4. Click <strong>Finish</strong>.</li> 
 			</ol>"));
-        
-        $fields->renameField("Content", "Top Content");
-        
+                
         return $fields;
     }
     
