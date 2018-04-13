@@ -27,7 +27,7 @@ class PhotoGalleryImage extends DataObject
     ];
 
     private static $table_name = 'PhotoGalleryImage';
-    private static $default_sort = "SortOrder ASC";
+    private static $default_sort = "SortOrder ASC, Created ASC";
 
     public function getCMSFields()
     {
@@ -39,6 +39,16 @@ class PhotoGalleryImage extends DataObject
         
         return $fields;
     }
+    
+    protected function onBeforeWrite()
+    {
+
+  		if (!$this->SortOrder) {
+  			$this->SortOrder = PhotoGalleryImage::get()->max('SortOrder') + 1;
+  		}
+  		
+  		parent::onBeforeWrite();
+  	}
 
     public function canCreate($member = null, $context = array())
     {

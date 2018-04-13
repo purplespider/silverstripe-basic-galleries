@@ -57,7 +57,7 @@ class PhotoGalleryExtension extends DataExtension
         $gridFieldConfig->addComponent(new GridFieldPaginator(100));
         $gridFieldConfig->removeComponentsByType(GridFieldAddNewButton::class);
         
-        $gridfield = new GridField("PhotoGalleryImages", $galleryTitle, $this->owner->PhotoGalleryImages()->sort("SortOrder"), $gridFieldConfig);
+        $gridfield = new GridField("PhotoGalleryImages", $galleryTitle, $this->owner->PhotoGalleryImages(), $gridFieldConfig);
         $fields->addFieldToTab('Root.'.$galleryCMSTab, HeaderField::create('addHeader','Add Images'),$insertGalleryBefore);
         $fields->addFieldToTab('Root.'.$galleryCMSTab, $gridfield,$insertGalleryBefore);
         
