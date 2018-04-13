@@ -19,14 +19,16 @@ class PhotoGalleryHolder extends Page
     private static $singular_name = "Image Gallery Holder";
     private static $icon = 'purplespider/basic-galleries:client/dist/images/holder-file.gif';
     
-    // public function getCMSFields()
-    // {
-    //     $fields = parent::getCMSFields();
-    // 
-    //     $fields->addFieldToTab('Root.Main',
-    //         new LiteralField("addnew", "<p><a href='".Director::absoluteBaseURL()."admin/pages/add/AddForm?action_doAdd=1&ParentID=".$this->ID."&PageType=PhotoGalleryPage&SecurityID=".SecurityToken::getSecurityID()."' class='ss-ui-button ss-ui-action-constructive ui-button' style='font-size:130%' data-icon=add''>New Photo Gallery</span></a></p>"), 'Title');
-    //     return $fields;
-    // }
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
+    
+        $fields->addFieldToTab('Root.Main',
+            new LiteralField("addnew", "<p><a href='".Director::absoluteBaseURL()."admin/pages/add/AddForm?action_doAdd=1&ParentID=".$this->ID."&PageType=PurpleSpider%5CBasicGalleries%5CPhotoGalleryPage&SecurityID=".SecurityToken::getSecurityID()."' class='btn btn-primary font-icon-plus'>New Image Gallery</span></a></p>"), 'Title');
+            
+            $fields->renameField("Content", "Top Content");
+        return $fields;
+    }
     
     public function ChildHolders()
     {
