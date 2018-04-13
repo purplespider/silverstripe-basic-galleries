@@ -28,6 +28,19 @@ class PhotoGalleryExtension extends DataExtension
         
     public function updateCMSFields(FieldList $fields)
     {
+        if (!$galleryCMSTab = $this->owner->config()->get('gallery-cms-tab')) {
+          $galleryCMSTab = "Main";
+        }
+        
+        $insertGalleryBefore = null;
+        if ($galleryCMSTab == "Main") {
+          $insertGalleryBefore = "Metadata";
+        }
+        
+        if (!$galleryTitle = $this->owner->config()->get('gallery-title')) {
+          $galleryTitle = "Image Gallery";
+        }
+      
         $gridFieldConfig = GridFieldConfig_RecordEditor::create();
         $gridFieldConfig->addComponent(new BulkUploader());
         // $gridFieldConfig->addComponent(new GridFieldGalleryTheme(Image::class));
@@ -44,9 +57,9 @@ class PhotoGalleryExtension extends DataExtension
         $gridFieldConfig->addComponent(new GridFieldPaginator(100));
         $gridFieldConfig->removeComponentsByType(GridFieldAddNewButton::class);
         
-        $gridfield = new GridField("PhotoGalleryImages", "Image Gallery", $this->owner->PhotoGalleryImages()->sort("SortOrder"), $gridFieldConfig);
-        $fields->addFieldToTab('Root.Main', HeaderField::create('addHeader','Add Images'),'Content');
-        $fields->addFieldToTab('Root.Main', $gridfield, 'Content');
+        $gridfield = new GridField("PhotoGalleryImages", $galleryTitle, $this->owner->PhotoGalleryImages()->sort("SortOrder"), $gridFieldConfig);
+        $fields->addFieldToTab('Root.'.$galleryCMSTab, HeaderField::create('addHeader','Add Images'),$insertGalleryBefore);
+        $fields->addFieldToTab('Root.'.$galleryCMSTab, $gridfield,$insertGalleryBefore);
         
         return $fields;
     }

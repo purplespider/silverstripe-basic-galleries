@@ -25,21 +25,19 @@ class PhotoGalleryPage extends Page
     
     public function getCMSFields()
     {
-        $this->beforeUpdateCMSFields(function ($fields) {
-                // Makes Image Gallery Tab Default, if images exist
-              if ($this->PhotoGalleryImages()->exists()) {
-                  // $fields->insertBefore(new Tab('ImageGallery'), 'Main');
-              } else {
-                // $fields->addFieldToTab("Root.Main", LiteralField::create('addImagesHeader', '<h2>Add images to this gallery using the <strong>Image Gallery</strong> tab above.</h2>'),'Title');
-              }
-              // $fields->renameField("Content", "Top Content");
-							
-            });
-
         $fields = parent::getCMSFields();
         
-        $fields->addFieldToTab("Root.TopContent", HTMLEditorField::create('Content', 'Top Content'));
-                
+        if (!$contentCMSTab = $this->owner->config()->get('content-cms-tab')) {
+          $contentCMSTab = "Main";
+        }
+        
+        $insertContentBefore = null;
+        if ($contentCMSTab == "Main") {
+          $insertContentBefore = "Metadata";
+        }
+        
+        $fields->addFieldToTab("Root.".$contentCMSTab, HTMLEditorField::create('Content', 'Top Content'),$insertContentBefore);
+        
         return $fields;
     }
     

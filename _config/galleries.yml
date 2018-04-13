@@ -4,3 +4,6 @@ SilverStripe\Admin\LeftAndMain:
 PurpleSpider\BasicGalleries\PhotoGalleryPage:
   extensions:
     - PurpleSpider\BasicGalleries\PhotoGalleryExtension
+  gallery-title: Image Gallery
+  gallery-cms-tab: Main
+  content-cms-tab: Top Content
