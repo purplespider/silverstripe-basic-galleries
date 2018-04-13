@@ -1,42 +1,53 @@
 <?php
 
+namespace PurpleSpider\BasicGalleries;
+
+
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\HeaderField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use Colymba\BulkUpload\BulkUploader;
+use SilverStripe\Assets\Image;
+use SilverStripe\Forms\GridField\GridFieldPaginator;
+use SilverStripe\Forms\GridField\GridFieldAddNewButton;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\ORM\DataExtension;
+use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
+use PurpleSpider\BasicGalleries\PhotoGalleryImage;
+use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+
+
 class PhotoGalleryExtension extends DataExtension
 {
     
     // One gallery page has many gallery images
     private static $has_many = array(
-    'PhotoGalleryImages' => 'PhotoGalleryImage'
+    'PhotoGalleryImages' => PhotoGalleryImage::class
     );
         
     public function updateCMSFields(FieldList $fields)
     {
         $gridFieldConfig = GridFieldConfig_RecordEditor::create();
-        $gridFieldConfig->addComponent(new GridFieldBulkUpload());
-        $gridFieldConfig->addComponent(new GridFieldGalleryTheme('Image'));
-        $bulkUpload = $gridFieldConfig->getComponentByType('GridFieldBulkUpload');
+        $gridFieldConfig->addComponent(new BulkUploader());
+        // $gridFieldConfig->addComponent(new GridFieldGalleryTheme(Image::class));
+        $bulkUpload = $gridFieldConfig->getComponentByType(BulkUploader::class);
         $bulkUpload->setUfSetup('setFolderName', "Managed/PhotoGalleries/".$this->owner->ID."-".$this->owner->URLSegment);
-        $bulkUpload->setUfConfig('canAttachExisting', false);
-        $bulkUpload->setUfConfig('canPreviewFolder', false);
-        $bulkUpload->setUfConfig('overwriteWarning', false); // Required to ensure upload order is consistent
-        $bulkUpload->setUfConfig('sequentialUploads', true);
+        // $bulkUpload->setUfConfig('canAttachExisting', false);
+        // $bulkUpload->setUfConfig('canPreviewFolder', false);
+        // $bulkUpload->setUfConfig('overwriteWarning', false); // Required to ensure upload order is consistent
+        // $bulkUpload->setUfConfig('sequentialUploads', true);
         
-        $gridFieldConfig->removeComponentsByType('GridFieldPaginator');
-        $gridFieldConfig->addComponent(new GridFieldSortableRows('SortOrder'));
+        $gridFieldConfig->removeComponentsByType(GridFieldPaginator::class);
+        // $gridFieldConfig->addComponent(new GridFieldSortableRows('SortOrder'));
+        $gridFieldConfig->addComponent(GridFieldOrderableRows::create()->setSortField('SortOrder'));
         $gridFieldConfig->addComponent(new GridFieldPaginator(100));
-        $gridFieldConfig->removeComponentsByType('GridFieldAddNewButton');
+        $gridFieldConfig->removeComponentsByType(GridFieldAddNewButton::class);
         
         $gridfield = new GridField("PhotoGalleryImages", "Image Gallery", $this->owner->PhotoGalleryImages()->sort("SortOrder"), $gridFieldConfig);
-        $fields->addFieldToTab('Root.ImageGallery', $gridfield);
-
-        $fields->addFieldToTab('Root.ImageGallery', new LiteralField('help', "
-			<h2>To upload new images:</h2>
-			<ol>
-			<li>1. Click the <strong>From your computer</strong> button above.</li>
-			<li>2. <strong>Locate and select</strong> the image(s) you wish to upload.</li>
-			<li>3. Click on <strong>Open/Choose</strong> and the image(s) will begin to upload.</li>
-			<li>4. Click <strong>Finish</strong>.</li> 
-			</ol>"));
-                
+        $fields->addFieldToTab('Root.Main', HeaderField::create('addHeader','Add Images'),'Content');
+        $fields->addFieldToTab('Root.Main', $gridfield, 'Content');
+        
         return $fields;
     }
     

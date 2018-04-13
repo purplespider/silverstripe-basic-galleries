@@ -1,11 +1,23 @@
 <?php
 
+namespace PurpleSpider\BasicGalleries;
+
+
+use SilverStripe\Control\Director;
+use SilverStripe\Security\SecurityToken;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\View\Requirements;
+use SilverStripe\ORM\PaginatedList;
+use PageController;
+use Page;
+
+
 class PhotoGalleryHolder extends Page
 {
 
-    private static $description = "Container for individual Photo Gallery Pages";
-    private static $singular_name = "Photo Gallery Holder";
-    private static $icon = 'basic-galleries/images/holder';
+    private static $description = "Container for multiple Image Gallery pages";
+    private static $singular_name = "Image Gallery Holder";
+    private static $icon = 'purplespider/basic-galleries:client/dist/images/holder-file.gif';
     
     public function getCMSFields()
     {
@@ -27,19 +39,9 @@ class PhotoGalleryHolder extends Page
     }
 }
 
-class PhotoGalleryHolder_Controller extends Page_Controller
+class PhotoGalleryHolder_Controller extends PageController
 {
 
-    public function init()
-    {
-        if (Director::fileExists(project() . "/css/gallery.css")) {
-            Requirements::css(project() . "/css/gallery.css");
-        } else {
-            Requirements::css("basic-galleries/css/gallery.css");
-        }
-        parent::init();
-    }
-   
     public function Galleries()
     {
         $list = new PaginatedList(PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID))->sort("Created DESC"), $this->request);

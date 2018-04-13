@@ -1,0 +1,15 @@
+.galleryholder__gallerylink {
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.galleryholder__gallerylink:hover {
+  color: #000 !important;
+  border: 0 !important;
+}
+
+.galleryholder__gallerylink__title {
+  display: block;
+}

@@ -1,6 +1,6 @@
-LeftAndMain:
-    extra_requirements_css:
-        - basic-galleries/css/cms.css
-PhotoGalleryPage:
-    extensions:
-        - PhotoGalleryExtension
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_css:
+    - 'purplespider/basic-galleries:client/dist/css/cms.css'
+PurpleSpider\BasicGalleries\PhotoGalleryPage:
+  extensions:
+    - PurpleSpider\BasicGalleries\PhotoGalleryExtension

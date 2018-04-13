@@ -1,23 +1,32 @@
 <?php
 
+namespace PurpleSpider\BasicGalleries;
+
+
+use SilverStripe\Assets\Image;
+use SilverStripe\ORM\DataObject;
+
+
+
 class PhotoGalleryImage extends DataObject
 {
  
-    private static $db = array(
+    private static $db = [
         'SortOrder' => 'Int',
         'Title' => 'Varchar(255)'
-    );
+    ];
     
-    private static $has_one = array(
-        'Image' => 'Image',
+    private static $has_one = [
+        'Image' => Image::class,
         'PhotoGalleryPage' => 'Page'
-    );
+    ];
     
-    private static $summary_fields = array(
+    private static $summary_fields = [
+      'Image.CMSThumbnail' => 'Image',
        'Title' => 'Caption',
-       'Thumbnail' => 'Thumbnail'
-    );
+    ];
 
+    private static $table_name = 'PhotoGalleryImage';
     private static $default_sort = "SortOrder ASC";
 
     public function getCMSFields()
@@ -30,18 +39,8 @@ class PhotoGalleryImage extends DataObject
         
         return $fields;
     }
-        
-    public function getThumbnail()
-    {
-        return $this->Image()->CMSThumbnail();
-    }
-    
-    public function getThumb()
-    {
-        return $this->Image()->croppedImage(170, 140);
-    }
-    
-    public function canCreate($members = null)
+
+    public function canCreate($member = null, $context = array())
     {
         return true;
     }

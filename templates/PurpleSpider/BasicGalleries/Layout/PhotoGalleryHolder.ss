@@ -1,3 +1,5 @@
+<% require css("purplespider/basic-galleries: client/dist/css/basic-galleries.css") %>
+
 <h1>$Title</h1>
 
 $Content
@@ -9,10 +11,10 @@ $Content
 			<% if AllGalleries %>
 				<% if AllGalleries.First.PhotoGalleryImages %>
 					<% with AllGalleries.First.PhotoGalleryImages.First %>
-					<div class="gallerythumb">
-						<p><a href="$PhotoGalleryPage.Parent.Link"><img src="$Thumb.URL" width="$Thumb.Width" height="$Thumb.Height" /></a></p>
-						<p><a href="$PhotoGalleryPage.Parent.Link">$PhotoGalleryPage.Parent.Title</a></p>
-					</div>
+						<a class="galleryholder__gallerylink" href="$PhotoGalleryPage.Parent.Link">
+							<img src="$Image.Fill(300,200).URL" />
+							<span class="galleryholder__gallerylink__title">$PhotoGalleryPage.Parent.Title</span>
+						</a>
 					<% end_with %>
 				<% end_if %>
 			<% end_if %>
@@ -30,10 +32,10 @@ $Content
 		<% loop Galleries %>
 			<% if PhotoGalleryImages %>
 				<% with PhotoGalleryImages.First %>
-				<div class="gallerythumb">
-					<p><a href="$PhotoGalleryPage.Link"><img src="$Thumb.URL" width="$Thumb.Width" height="$Thumb.Height" /></a></p>
-					<p><a href="$PhotoGalleryPage.Link">$PhotoGalleryPage.Title</a></p>
-				</div>
+					<a class="galleryholder__gallerylink" href="$PhotoGalleryPage.Link">
+						<img src="$Image.Fill(300,200).URL" />
+						<span class="galleryholder__gallerylink__title">$PhotoGalleryPage.Title</span>
+					</a>
 				<% end_with %>
 			<% end_if %>
 		<% end_loop %>
@@ -61,9 +63,7 @@ $Content
 	<% end_if %>
 
 <% else %>
-	<div class="contenttext">
-		<p><strong>Sorry, we don't have any photo galleries yet. </strong>Please check back another time.</p>
-	</div>
+		<p><strong>Sorry, we don't have any photo galleries yet. </strong>Please check back later.</p>
 <% end_if %>
 
 $Form
