@@ -25,6 +25,10 @@ class PhotoGalleryImage extends DataObject
       'Image.CMSThumbnail' => 'Image',
        'Title' => 'Caption',
     ];
+    
+    private static $owns = [
+      'Image'
+    ];
 
     private static $table_name = 'PhotoGalleryImage';
     private static $default_sort = "SortOrder ASC, Created ASC";

@@ -25,6 +25,10 @@ class PhotoGalleryExtension extends DataExtension
     private static $has_many = array(
     'PhotoGalleryImages' => PhotoGalleryImage::class
     );
+    
+    private static $owns = [
+      'PhotoGalleryImages'
+    ];
         
     public function updateCMSFields(FieldList $fields)
     {
