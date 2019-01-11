@@ -51,7 +51,7 @@ class PhotoGalleryHolder extends Page
   			return PhotoGalleryPage::get()->filter(array(
   					'ParentID' => $this->ID,
   					'ClassName' => $excluded,
-  			));
+  			))->sort('Created DESC');
   	}
 }
 
