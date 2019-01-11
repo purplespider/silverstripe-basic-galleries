@@ -22,8 +22,8 @@ class PhotoGalleryImage extends DataObject
     ];
     
     private static $summary_fields = [
-      'Image.CMSThumbnail' => 'Image',
-       'Title' => 'Caption',
+        'Thumbnail' => 'Image',
+        'Title' => 'Caption',
     ];
     
     private static $owns = [
@@ -32,6 +32,10 @@ class PhotoGalleryImage extends DataObject
 
     private static $table_name = 'PhotoGalleryImage';
     private static $default_sort = "SortOrder ASC, Created ASC";
+    public function Thumbnail()
+    {
+      return $this->Image()->Fit(200,200);
+    }
 
     public function getCMSFields()
     {
