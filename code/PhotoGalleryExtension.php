@@ -2,20 +2,31 @@
 
 namespace PurpleSpider\BasicGalleries;
 
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig;
+use SilverStripe\Forms\GridField\GridFieldButtonRow;
+use SilverStripe\Forms\GridField\GridFieldPageCount;
+use SilverStripe\Forms\GridField\GridFieldPaginator;
+use SilverStripe\Forms\GridField\GridFieldEditButton;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\Forms\GridField\GridFieldConfig_Base;
+use SilverStripe\Forms\GridField\GridFieldFilterHeader;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
+use SilverStripe\Forms\GridField\GridFieldSortableHeader;
+use SilverStripe\Forms\GridField\GridField_ActionMenu;
 
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use Colymba\BulkUpload\BulkUploader;
 use SilverStripe\Assets\Image;
-use SilverStripe\Forms\GridField\GridFieldPaginator;
-use SilverStripe\Forms\GridField\GridFieldAddNewButton;
-use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataExtension;
-use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 use PurpleSpider\BasicGalleries\PhotoGalleryImage;
+
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
+use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
 
 
 class PhotoGalleryExtension extends DataExtension
@@ -44,22 +55,23 @@ class PhotoGalleryExtension extends DataExtension
         if (!$galleryTitle = $this->owner->config()->get('gallery-title')) {
           $galleryTitle = "Image Gallery";
         }
-      
-        $gridFieldConfig = GridFieldConfig_RecordEditor::create();
+    
+        $gridFieldConfig = new GridFieldConfig();
         $gridFieldConfig->addComponent(new BulkUploader());
-        // $gridFieldConfig->addComponent(new GridFieldGalleryTheme(Image::class));
         $bulkUpload = $gridFieldConfig->getComponentByType(BulkUploader::class);
         $bulkUpload->setUfSetup('setFolderName', "Managed/PhotoGalleries/".$this->owner->ID."-".$this->owner->URLSegment);
-        // $bulkUpload->setUfConfig('canAttachExisting', false);
-        // $bulkUpload->setUfConfig('canPreviewFolder', false);
-        // $bulkUpload->setUfConfig('overwriteWarning', false); // Required to ensure upload order is consistent
-        // $bulkUpload->setUfConfig('sequentialUploads', true);
-        
-        $gridFieldConfig->removeComponentsByType(GridFieldPaginator::class);
-        // $gridFieldConfig->addComponent(new GridFieldSortableRows('SortOrder'));
         $gridFieldConfig->addComponent(GridFieldOrderableRows::create()->setSortField('SortOrder'));
+        $gridFieldConfig->addComponent(new GridFieldButtonRow('before'));
+        $gridFieldConfig->addComponent(new GridFieldToolbarHeader());
+        $gridFieldConfig->addComponent($sort = new GridFieldSortableHeader());
+        $gridFieldConfig->addComponent($filter = new GridFieldFilterHeader());
+        $gridFieldConfig->addComponent(new GridFieldEditableColumns());
+        $gridFieldConfig->addComponent(new GridFieldEditButton());
+        $gridFieldConfig->addComponent(new GridFieldDeleteAction(true));
+        $gridFieldConfig->addComponent(new GridField_ActionMenu());
+        $gridFieldConfig->addComponent(new GridFieldPageCount('toolbar-header-right'));
         $gridFieldConfig->addComponent(new GridFieldPaginator(100));
-        $gridFieldConfig->removeComponentsByType(GridFieldAddNewButton::class);
+        $gridFieldConfig->addComponent(new GridFieldDetailForm());
         
         $gridfield = new GridField("PhotoGalleryImages", $galleryTitle, $this->owner->PhotoGalleryImages(), $gridFieldConfig);
         $fields->addFieldToTab('Root.'.$galleryCMSTab, HeaderField::create('addHeader','Add Images'),$insertGalleryBefore);
