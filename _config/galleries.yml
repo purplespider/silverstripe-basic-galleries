@@ -5,6 +5,7 @@ SilverStripe\Admin\LeftAndMain:
   extra_requirements_css:
     - 'purplespider/basic-galleries:client/dist/css/cms.css'
 PurpleSpider\BasicGalleries\PhotoGalleryPage:
+  show_in_sitetree: false
   extensions:
     - PurpleSpider\BasicGalleries\PhotoGalleryExtension
   gallery-title: Image Gallery

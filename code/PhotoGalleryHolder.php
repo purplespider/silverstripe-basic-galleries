@@ -18,6 +18,7 @@ class PhotoGalleryHolder extends Page
     private static $description = "Container for multiple Image Gallery pages";
     private static $singular_name = "Image Gallery Holder";
     private static $icon = 'purplespider/basic-galleries:client/dist/images/holder-file.gif';
+    private static $allowed_children = array(PhotoGalleryPage::class);
     
     public function getCMSFields()
     {
@@ -39,6 +40,19 @@ class PhotoGalleryHolder extends Page
     {
         return PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID));
     }
+    
+    public function getLumberjackTitle()
+    {
+        return "Photo Galleries";
+    }
+    
+    public function getLumberjackPagesForGridfield($excluded = array())
+  	{
+  			return PhotoGalleryPage::get()->filter(array(
+  					'ParentID' => $this->ID,
+  					'ClassName' => $excluded,
+  			));
+  	}
 }
 
 class PhotoGalleryHolder_Controller extends PageController
