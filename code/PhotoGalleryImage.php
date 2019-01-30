@@ -57,6 +57,16 @@ class PhotoGalleryImage extends DataObject
   		
   		parent::onBeforeWrite();
   	}
+    
+    protected function onBeforeDelete()
+    {
+
+  		if ($this->PhotoGalleryPage()->config()->get('ondelete-delete-image-files')) {
+  			$this->Image()->delete();
+  		}
+  		
+  		parent::onBeforeDelete();
+  	}
 
     public function canCreate($member = null, $context = array())
     {

@@ -69,7 +69,7 @@ class PhotoGalleryExtension extends DataExtension
         $gridFieldConfig->addComponent(new GridFieldFilterHeader());
         $gridFieldConfig->addComponent(new GridFieldEditableColumns());
         $gridFieldConfig->addComponent(new GridFieldEditButton());
-        $gridFieldConfig->addComponent(new GridFieldDeleteAction(true));
+        $gridFieldConfig->addComponent(new GridFieldDeleteAction());
         $gridFieldConfig->addComponent(new GridField_ActionMenu());
         $gridFieldConfig->addComponent(new GridFieldPageCount('toolbar-header-right'));
         $gridFieldConfig->addComponent(new GridFieldPaginator(100));
