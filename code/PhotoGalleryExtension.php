@@ -57,14 +57,16 @@ class PhotoGalleryExtension extends DataExtension
         }
     
         $gridFieldConfig = new GridFieldConfig();
+        
         $gridFieldConfig->addComponent(new BulkUploader());
         $bulkUpload = $gridFieldConfig->getComponentByType(BulkUploader::class);
-        $bulkUpload->setUfSetup('setFolderName', "Managed/PhotoGalleries/".$this->owner->ID."-".$this->owner->URLSegment);
+        $bulkUpload->setUfSetup('setFolderName', $this->getBulkUploadFolderName());
+        
         $gridFieldConfig->addComponent(GridFieldOrderableRows::create()->setSortField('SortOrder'));
         $gridFieldConfig->addComponent(new GridFieldButtonRow('before'));
         $gridFieldConfig->addComponent(new GridFieldToolbarHeader());
-        $gridFieldConfig->addComponent($sort = new GridFieldSortableHeader());
-        $gridFieldConfig->addComponent($filter = new GridFieldFilterHeader());
+        $gridFieldConfig->addComponent(new GridFieldSortableHeader());
+        $gridFieldConfig->addComponent(new GridFieldFilterHeader());
         $gridFieldConfig->addComponent(new GridFieldEditableColumns());
         $gridFieldConfig->addComponent(new GridFieldEditButton());
         $gridFieldConfig->addComponent(new GridFieldDeleteAction(true));
@@ -83,5 +85,13 @@ class PhotoGalleryExtension extends DataExtension
     public function GetGalleryImages()
     {
         return $this->owner->PhotoGalleryImages()->sort("SortOrder");
+    }
+    
+    protected function getBulkUploadFolderName()
+    {
+        if (method_exists($this->owner, 'getBulkUploadFolderName')) {
+            return $this->owner->getBulkUploadFolderName();
+        }
+        return "Managed/PhotoGalleries/".$this->owner->ID."-".$this->owner->URLSegment;
     }
 }
