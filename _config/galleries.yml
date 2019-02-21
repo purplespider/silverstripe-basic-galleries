@@ -11,4 +11,5 @@ PurpleSpider\BasicGalleries\PhotoGalleryPage:
   gallery-title: Image Gallery
   gallery-cms-tab: Main
   content-cms-tab: Top Content
+PurpleSpider\BasicGalleries\PhotoGalleryImage:
   ondelete_delete_image_files: false
