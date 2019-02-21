@@ -89,7 +89,7 @@ class PhotoGalleryExtension extends DataExtension
     
     protected function getBulkUploadFolderName()
     {
-        if (method_exists($this->owner, 'getBulkUploadFolderName')) {
+        if ($this->owner->hasMethod('getBulkUploadFolderName')) {
             return $this->owner->getBulkUploadFolderName();
         }
         return "Managed/PhotoGalleries/".$this->owner->ID."-".$this->owner->URLSegment;
