@@ -1,0 +1,4 @@
+SilverStripe\ORM\DatabaseAdmin:
+  classname_value_remapping:
+    PhotoGalleryPage: PurpleSpider\BasicGalleries\PhotoGalleryPage
+    PhotoGalleryHolder: PurpleSpider\BasicGalleries\PhotoGalleryHolder
