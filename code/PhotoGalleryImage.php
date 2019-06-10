@@ -61,7 +61,7 @@ class PhotoGalleryImage extends DataObject
     protected function onBeforeDelete()
     {
 
-  		if ($this->PhotoGalleryPage()->config()->ondelete_delete_image_files) {
+  		if ($this->config()->ondelete_delete_image_files) {
   			$this->Image()->delete();
   		}
   		
