@@ -16,7 +16,7 @@ class PhotoGalleryPage extends Page
 {
     
     private static $description = " Includes a single image gallery with the ability to upload multiple images via the CMS";
-    private static $icon = 'purplespider/basic-galleries:client/dist/images/gallery-file.gif';
+    private static $icon_class = 'font-icon-p-gallery-alt';
     private static $singular_name = "Image Gallery";
 
     private static $defaults = array(

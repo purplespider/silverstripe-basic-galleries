@@ -17,7 +17,7 @@ class PhotoGalleryHolder extends Page
 
     private static $description = "Container for multiple Image Gallery pages";
     private static $singular_name = "Image Gallery Holder";
-    private static $icon = 'purplespider/basic-galleries:client/dist/images/holder-file.gif';
+    private static $icon_class = 'font-icon-p-gallery';
     private static $allowed_children = array(PhotoGalleryPage::class);
     
     public function getCMSFields()
