@@ -16,7 +16,8 @@
 		"silverstripe/framework": "^4.4",
 		"silverstripe/cms": "^4.4",
 		"colymba/gridfield-bulk-editing-tools": "3.*",
-		"symbiote/silverstripe-gridfieldextensions": "^3"
+		"symbiote/silverstripe-gridfieldextensions": "^3",
+		"silverstripe/lumberjack": "2.*"
 	},
 	"extra": {
 		"expose": [
