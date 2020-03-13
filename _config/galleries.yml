@@ -1,15 +1,10 @@
 ---
 Name: basic-galleries
 ---
-SilverStripe\Admin\LeftAndMain:
-  extra_requirements_css:
-    - 'purplespider/basic-galleries:client/dist/css/cms.css'
 PurpleSpider\BasicGalleries\PhotoGalleryPage:
   show_in_sitetree: false
   extensions:
-    - PurpleSpider\BasicGalleries\PhotoGalleryExtension
+    - PurpleSpider\BasicGalleryExtension\PhotoGalleryExtension
   gallery-title: Image Gallery
   gallery-cms-tab: Main
   content-cms-tab: Top Content
-PurpleSpider\BasicGalleries\PhotoGalleryImage:
-  ondelete_delete_image_files: false
