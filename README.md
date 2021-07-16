@@ -35,3 +35,9 @@ HomePage:
   gallery-title: Image Gallery
   gallery-cms-tab: Main
 ````
+
+## Version Details
+
+* 0.* = Silverstripe 3
+* 1.* = Silverstripe 4
+* 2.* = Silverstripe 4 (Uses newer version of `PhotoGalleryExtension` with a polymorphic relation, so upgrading from 1 to 2 will break existing galleries.)
