@@ -24,6 +24,9 @@ composer require purplespider/basic-galleries ^2
 4. You can then create Photo Gallery Pages underneath this holder.
 5. On a Photo Gallery Page, click on the Image Gallery tab, then click Bulk Upload to add images.
 
+## Screenshot
+<img width="1277" alt="Screenshot 2021-07-16 at 13 15 28@2x" src="https://user-images.githubusercontent.com/329880/125945926-12f45da8-ec7a-4851-927c-c8dddee461af.png">
+
 ## Config
 
 You can customise the CMS tab that the gallery appears on, as well as the title of the gallery displayed in the CMS:
