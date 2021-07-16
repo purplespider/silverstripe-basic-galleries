@@ -11,9 +11,9 @@ $Content
 			<% if AllGalleries %>
 				<% if AllGalleries.First.PhotoGalleryImages %>
 					<% with AllGalleries.First.PhotoGalleryImages.First %>
-						<a class="galleryholder__gallerylink" href="$PhotoGalleryPage.Parent.Link">
+						<a class="galleryholder__gallerylink" href="$ParentPhotoGalleryPage.Parent.Link">
 							<img src="$Image.Fill(300,200).URL" />
-							<span class="galleryholder__gallerylink__title">$PhotoGalleryPage.Parent.Title</span>
+							<span class="galleryholder__gallerylink__title">$ParentPhotoGalleryPage.Parent.Title</span>
 						</a>
 					<% end_with %>
 				<% end_if %>
@@ -32,9 +32,9 @@ $Content
 		<% loop Galleries %>
 			<% if PhotoGalleryImages %>
 				<% with PhotoGalleryImages.First %>
-					<a class="galleryholder__gallerylink" href="$PhotoGalleryPage.Link">
+					<a class="galleryholder__gallerylink" href="$ParentPhotoGalleryPage.Link">
 						<img src="$Image.Fill(300,200).URL" />
-						<span class="galleryholder__gallerylink__title">$PhotoGalleryPage.Title</span>
+						<span class="galleryholder__gallerylink__title">$ParentPhotoGalleryPage.Title</span>
 					</a>
 				<% end_with %>
 			<% end_if %>
