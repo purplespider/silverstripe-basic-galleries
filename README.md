@@ -16,7 +16,7 @@ Designed to provide a simple, fool-proof way for users to add image galleries to
 
 1. Install:
 ````
-composer require purplespider/purplespider/basic-galleries ^2
+composer require purplespider/basic-galleries ^2
 ````
 
 2. Visit yoursite.com/dev/build to rebuild the database.
