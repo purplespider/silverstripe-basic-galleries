@@ -24,6 +24,9 @@ composer require purplespider/basic-galleries ^2
 4. You can then create Photo Gallery Pages underneath this holder.
 5. On a Photo Gallery Page, click on the Image Gallery tab, then click Bulk Upload to add images.
 
+## Screenshot
+<img width="1277" alt="Screenshot 2021-07-16 at 13 15 28@2x" src="https://user-images.githubusercontent.com/329880/125945926-12f45da8-ec7a-4851-927c-c8dddee461af.png">
+
 ## Config
 
 You can customise the CMS tab that the gallery appears on, as well as the title of the gallery displayed in the CMS:
@@ -41,3 +44,9 @@ HomePage:
 * 0.* = Silverstripe 3
 * 1.* = Silverstripe 4
 * 2.* = Silverstripe 4 (Uses newer version of `PhotoGalleryExtension` with a polymorphic relation, so upgrading from 1 to 2 will break existing galleries.)
+
+## Upgrade Notes
+### To v1 (extension moved to seperate module)
+* Change any references to the extension, e.g. if applied to the Homepage type, from `PurpleSpider\BasicGalleries\PhotoGalleryExtension` to `PurpleSpider\BasicGalleryExtension\PhotoGalleryExtension`
+* `PurpleSpider\BasicGalleries\PhotoGalleryImage` is now `PurpleSpider\BasicGalleryExtension\PhotoGalleryImage` (in case you applied your own extension to it)
+* Running dev/build will update table names automatically (via legacy.yml)
