@@ -44,3 +44,9 @@ HomePage:
 * 0.* = Silverstripe 3
 * 1.* = Silverstripe 4
 * 2.* = Silverstripe 4 (Uses newer version of `PhotoGalleryExtension` with a polymorphic relation, so upgrading from 1 to 2 will break existing galleries.)
+
+## Upgrade Notes
+### To v1 (extension moved to seperate module)
+* Change any references to the extension, e.g. if applied to the Homepage type, from `PurpleSpider\BasicGalleries\PhotoGalleryExtension` to `PurpleSpider\BasicGalleryExtension\PhotoGalleryExtension`
+* `PurpleSpider\BasicGalleries\PhotoGalleryImage` is now `PurpleSpider\BasicGalleryExtension\PhotoGalleryImage` (in case you applied your own extension to it)
+* Running dev/build will update table names automatically (via legacy.yml)
