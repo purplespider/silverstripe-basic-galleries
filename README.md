@@ -6,6 +6,9 @@ Provides basic image gallery functionality to a SilverStripe site.
 
 Designed to provide a simple, fool-proof way for users to add image galleries to their website.
 
+Applies [Basic Image Gallery Extension
+](https://github.com/purplespider/silverstripe-basic-gallery-extension) to a `PhotoGalleryPage` page type, and includes a `PhotoGalleryHolder` type.
+
 ## Maintainer Contact ##
  * James Cocker (ssmodulesgithub@pswd.biz)
  
@@ -49,4 +52,7 @@ HomePage:
 ### To v1 (extension moved to seperate module)
 * Change any references to the extension, e.g. if applied to the Homepage type, from `PurpleSpider\BasicGalleries\PhotoGalleryExtension` to `PurpleSpider\BasicGalleryExtension\PhotoGalleryExtension`
 * `PurpleSpider\BasicGalleries\PhotoGalleryImage` is now `PurpleSpider\BasicGalleryExtension\PhotoGalleryImage` (in case you applied your own extension to it)
-* Running dev/build will update table names automatically (via legacy.yml)
+* Run dev/build to update table names automatically (via legacy.yml)
+## to v2 (individual page and elemental relations changed to a single polymorphic relation)
+* Complete "To v1" upgrade instructions, inc `dev/build`
+* Run `/dev/tasks/upgrade-basic-galleries` script to update database for existing galleries.
