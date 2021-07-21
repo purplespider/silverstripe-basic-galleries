@@ -6,6 +6,9 @@ Provides basic image gallery functionality to a SilverStripe site.
 
 Designed to provide a simple, fool-proof way for users to add image galleries to their website.
 
+Applies [Basic Image Gallery Extension
+](https://github.com/purplespider/silverstripe-basic-gallery-extension) to a `PhotoGalleryPage` page type, and includes a `PhotoGalleryHolder` type.
+
 ## Maintainer Contact ##
  * James Cocker (ssmodulesgithub@pswd.biz)
  
