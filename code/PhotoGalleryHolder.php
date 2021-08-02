@@ -3,17 +3,26 @@
 namespace PurpleSpider\BasicGalleries;
 
 
-use SilverStripe\Control\Director;
-use SilverStripe\Security\SecurityToken;
-use SilverStripe\Forms\LiteralField;
-use SilverStripe\View\Requirements;
-use SilverStripe\ORM\PaginatedList;
-use PageController;
 use Page;
+use PageController;
+use SilverStripe\Control\Director;
+use SilverStripe\ORM\PaginatedList;
+use SilverStripe\View\Requirements;
+use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\NumericField;
+use SilverStripe\Security\SecurityToken;
 
 
 class PhotoGalleryHolder extends Page
 {
+
+    private static $db = [
+        'PageLength' => 'Int'
+    ];
+
+    private static $defaults = [
+        'PageLength' => '10',
+    ];
 
     private static $description = "Container for multiple Image Gallery pages";
     private static $singular_name = "Image Gallery Holder";
@@ -28,6 +37,8 @@ class PhotoGalleryHolder extends Page
             new LiteralField("addnew", "<p><a href='".Director::absoluteBaseURL()."admin/pages/add/AddForm?action_doAdd=1&ParentID=".$this->ID."&PageType=PurpleSpider%5CBasicGalleries%5CPhotoGalleryPage&SecurityID=".SecurityToken::getSecurityID()."' class='btn btn-primary font-icon-plus'>New Image Gallery</span></a></p>"), 'Title');
             
             $fields->renameField("Content", "Top Content");
+
+            $fields->addFieldToTab("Root.Main", NumericField::create('PageLength', 'Number of galleries to display per page')->setDescription('Default: 10'),'Metadata');
         return $fields;
     }
     
@@ -53,6 +64,11 @@ class PhotoGalleryHolder extends Page
   					'ClassName' => $excluded,
   			))->sort('Created DESC');
   	}
+
+    public function getMyPageLength()
+    {
+        return $this->PageLength ? $this->PageLength : 10;
+    }
 }
 
 class PhotoGalleryHolder_Controller extends PageController
@@ -61,7 +77,8 @@ class PhotoGalleryHolder_Controller extends PageController
     public function Galleries()
     {
         $list = new PaginatedList(PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID))->sort("Created DESC"), $this->request);
-        $list->setPageLength(10);
+        $list->setPageLength($this->getMyPageLength());
         return $list;
     }
+
 }
