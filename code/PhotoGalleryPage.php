@@ -17,6 +17,7 @@ class PhotoGalleryPage extends Page
     
     private static $description = " Includes a single image gallery with the ability to upload multiple images via the CMS";
     private static $icon_class = 'font-icon-p-gallery-alt';
+    private static $table_name = 'PurpleSpider_BasicGalleries_PhotoGalleryPage';
     private static $singular_name = "Image Gallery";
 
     private static $defaults = array(

@@ -26,6 +26,7 @@ class PhotoGalleryHolder extends Page
 
     private static $description = "Container for multiple Image Gallery pages";
     private static $singular_name = "Image Gallery Holder";
+    private static $table_name = 'PurpleSpider_BasicGalleries_PhotoGalleryHolder';
     private static $icon_class = 'font-icon-p-gallery';
     private static $allowed_children = array(PhotoGalleryPage::class);
     
