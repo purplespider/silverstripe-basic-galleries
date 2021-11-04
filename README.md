@@ -42,6 +42,18 @@ HomePage:
   gallery-cms-tab: Main
 ````
 
+### Automatically Delete Image Files
+To automatically delete image files when an image is deleted from a gallery:
+````yml
+---
+Name: custom-basic-gallery-extension
+After: basic-gallery-extension
+---
+PurpleSpider\BasicGalleryExtension\PhotoGalleryImage:
+  ondelete_delete_image_files: true
+````
+This uses [Delete Asset If Unused Extension](https://github.com/purplespider/asset-delete-if-unused-extension) to detect if the image is being used elsewhere on the site, and will only delete it if it isn't. There are caveats though, so check this module's readme, i.e. you might not want to use this on sites that have been upgraded from Silverstripe 3.
+
 ## Version Details
 
 * 0.* = Silverstripe 3
