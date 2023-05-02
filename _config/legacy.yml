@@ -3,4 +3,5 @@ Name: basic-galleries-legacy
 ---
 SilverStripe\ORM\DatabaseAdmin:
   classname_value_remapping:
-    PurpleSpider\BasicGalleries\PhotoGalleryImage: PurpleSpider\BasicGalleryExtension\PhotoGalleryImage 
+    PurpleSpider\BasicGalleries\PhotoGalleryImage: PurpleSpider\BasicGalleryExtension\PhotoGalleryImage
+    PhotoGalleryImage: PurpleSpider\BasicGalleryExtension\PhotoGalleryImage
