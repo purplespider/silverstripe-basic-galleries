@@ -13,9 +13,9 @@
 		"issues": "https://github.com/purplespider/silverstripe-basic-galleries/issues"
 	},
 	"require": {
-		"silverstripe/framework": "^4.4",
-		"silverstripe/cms": "^4.4",
-		"purplespider/silverstripe-basic-gallery-extension": "^3"
+		"silverstripe/framework": "^5",
+		"silverstripe/cms": "^5",
+		"purplespider/silverstripe-basic-gallery-extension": "^4"
 	},
 	"extra": {
 		"expose": [
