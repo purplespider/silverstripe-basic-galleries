@@ -29,42 +29,39 @@ class PhotoGalleryHolder extends Page
     private static $table_name = 'PurpleSpider_BasicGalleries_PhotoGalleryHolder';
     private static $icon_class = 'font-icon-p-gallery';
     private static $allowed_children = array(PhotoGalleryPage::class);
-    
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-    
-        $fields->addFieldToTab('Root.Main',
-            new LiteralField("addnew", "<p><a href='".Director::absoluteBaseURL()."admin/pages/add/AddForm?action_doAdd=1&ParentID=".$this->ID."&PageType=PurpleSpider%5CBasicGalleries%5CPhotoGalleryPage&SecurityID=".SecurityToken::getSecurityID()."' class='btn btn-primary font-icon-plus'>New Image Gallery</span></a></p>"), 'Title');
-            
-            $fields->renameField("Content", "Top Content");
 
-            $fields->addFieldToTab("Root.Main", NumericField::create('PageLength', 'Number of galleries to display per page')->setDescription('Default: 10'),'Metadata');
+        $fields->renameField("Content", "Top Content");
+
+        $fields->addFieldToTab("Root.Main", NumericField::create('PageLength', 'Number of galleries to display per page')->setDescription('Default: 10'), 'Metadata');
         return $fields;
     }
-    
+
     public function ChildHolders()
     {
-        return PhotoGalleryHolder::get()->filter(array("ParentID"=>$this->ID));
+        return PhotoGalleryHolder::get()->filter(array("ParentID" => $this->ID));
     }
-    
+
     public function AllGalleries()
     {
         return PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID));
     }
-    
+
     public function getLumberjackTitle()
     {
         return "Photo Galleries";
     }
-    
+
     public function getLumberjackPagesForGridfield($excluded = array())
-  	{
-  			return PhotoGalleryPage::get()->filter(array(
-  					'ParentID' => $this->ID,
-  					'ClassName' => $excluded,
-  			))->sort('Created DESC');
-  	}
+    {
+        return PhotoGalleryPage::get()->filter(array(
+            'ParentID' => $this->ID,
+            'ClassName' => $excluded,
+        ))->sort('Created DESC');
+    }
 
     public function getMyPageLength()
     {
@@ -81,5 +78,4 @@ class PhotoGalleryHolder_Controller extends PageController
         $list->setPageLength($this->getMyPageLength());
         return $list;
     }
-
 }
