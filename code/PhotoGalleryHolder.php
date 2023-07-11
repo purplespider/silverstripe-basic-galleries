@@ -76,4 +76,10 @@ class PhotoGalleryHolder extends Page
         $list->setPageLength($this->getMyPageLength());
         return $list;
     }
+
+    // To avoid breaking earlier templates
+    function Galleries()
+    {
+        return $this->PaginatedGalleries();
+    }
 }
