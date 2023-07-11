@@ -8,9 +8,11 @@ use PageController;
 use SilverStripe\Control\Director;
 use SilverStripe\ORM\PaginatedList;
 use SilverStripe\View\Requirements;
+use SilverStripe\Control\Controller;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Forms\NumericField;
 use SilverStripe\Security\SecurityToken;
+use PurpleSpider\BasicGalleries\PhotoGalleryPage;
 
 
 class PhotoGalleryHolder extends Page
@@ -67,14 +69,10 @@ class PhotoGalleryHolder extends Page
     {
         return $this->PageLength ? $this->PageLength : 10;
     }
-}
 
-class PhotoGalleryHolder_Controller extends PageController
-{
-
-    public function Galleries()
+    public function PaginatedGalleries()
     {
-        $list = new PaginatedList(PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID))->sort("Created DESC"), $this->request);
+        $list = new PaginatedList(PhotoGalleryPage::get()->filter(array("ParentID" => $this->ID))->sort("Created DESC"), Controller::curr()->getRequest());
         $list->setPageLength($this->getMyPageLength());
         return $list;
     }
