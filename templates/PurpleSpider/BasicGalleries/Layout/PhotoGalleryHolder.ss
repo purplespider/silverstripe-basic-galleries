@@ -40,27 +40,41 @@ $Content
 			<% end_if %>
 		<% end_loop %>
 	
-	<% if Galleries.MoreThanOnePage %>
-		<div class="pagination">
-		    <% if Galleries.NotFirstPage %>
-		        <a class="prev" href="$Galleries.PrevLink">Prev</a>
-		    <% end_if %>
-		    <% loop Galleries.Pages %>
-		        <% if CurrentBool %>
-		            $PageNum
-		        <% else %>
-		            <% if Link %>
-		                <a href="$Link">$PageNum</a>
-		            <% else %>
-		                ...
-		            <% end_if %>
-		        <% end_if %>
-		        <% end_loop %>
-		    <% if Galleries.NotLastPage %>
-		        <a class="next" href="$Galleries.NextLink">Next</a>
-		    <% end_if %>
-	    </div>
-	<% end_if %>
+        <% if PaginatedGalleries.MoreThanOnePage %>
+            <% with $PaginatedGalleries %>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <% if $NotFirstPage %>
+                            <li class="page-item">
+                                <a class="page-link prev" href="{$PrevLink}" aria-label="Previous page">
+                                    <span aria-hidden="true">Previous</span>
+                                </a>
+                            </li>
+                        <% end_if %>
+
+                        <% loop $PaginationSummary(4) %>
+                            <% if $CurrentBool %>
+                                <li class="page-item active" aria-current="page"><a class="page-link" href="#">$PageNum</a></li>
+                            <% else %>
+                                <% if $Link %>
+                                    <li class="page-item"><a class="page-link" href="$Link">$PageNum</a></li>
+                                <% else %>
+                                <li class="page-item disabled">...</li>
+                                <% end_if %>
+                            <% end_if %>
+                        <% end_loop %>
+
+                        <% if $NotLastPage %>
+                            <li class="page-item">
+                                <a class="page-link prev" href="{$NextLink}" aria-label="Next page">
+                                    <span aria-hidden="true">Next</span>
+                                </a>
+                            </li>
+                        <% end_if %>
+                    </ul>
+                </nav>
+            <% end_with %>
+        <% end_if %>
 
 <% else %>
 		<p><strong>Sorry, we don't have any photo galleries yet. </strong>Please check back later.</p>
