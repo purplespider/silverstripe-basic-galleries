@@ -20,30 +20,9 @@ Applies [Basic Image Gallery Extension
 ## Installation Instructions
 
 1. Install:
-   Until [this PR](https://github.com/colymba/GridFieldBulkEditingTools/pull/238) is merged:
-   Add to composer.json:
-
-    ```
-        "repositories": [
-    		{
-    			"type": "vcs",
-    			"url": "https://github.com/purplespider/GridFieldBulkEditingTools"
-    		}
-    	],
-    ```
-
-    Add to `require`:
-
-    ```
-    "colymba/gridfield-bulk-editing-tools": "dev-ss5-fix-json2array as 4.0",
-    ```
-
-    Then install this module:
-
+   
     ```
     composer require purplespider/basic-galleries ^3
-
-
     ```
 
 2. Visit yoursite.com/dev/build to rebuild the database.
@@ -105,4 +84,4 @@ This uses [Delete Asset If Unused Extension](https://github.com/purplespider/ass
 
 ## to v3 (Silverstripe 5)
 
--   Nothing extra required, just change version to `^3` and note above re extra repository.
+-   Nothing extra required, just change version to `^3`.
