@@ -6,7 +6,7 @@ namespace PurpleSpider\BasicGalleries;
 use Page;
 use PageController;
 use SilverStripe\Control\Director;
-use SilverStripe\ORM\PaginatedList;
+use SilverStripe\Model\List\PaginatedList;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\LiteralField;
@@ -29,9 +29,10 @@ class PhotoGalleryHolder extends Page
     private static $description = "Container for multiple Image Gallery pages";
     private static $singular_name = "Image Gallery Holder";
     private static $table_name = 'PurpleSpider_BasicGalleries_PhotoGalleryHolder';
-    private static $icon_class = 'font-icon-p-gallery';
+    private static $cms_icon_class = 'font-icon-p-gallery';
     private static $allowed_children = array(PhotoGalleryPage::class);
 
+    #[\Override]
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
