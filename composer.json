@@ -15,14 +15,8 @@
 	"require": {
 		"silverstripe/framework": "^6",
 		"silverstripe/cms": "^6",
-		"purplespider/silverstripe-basic-gallery-extension": "dev-ss6 as 6.0"
+		"purplespider/silverstripe-basic-gallery-extension": "^5"
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/purplespider/silverstripe-basic-gallery-extension.git"
-		}
-	],
 	"extra": {
 		"expose": [
 			 "client/dist"

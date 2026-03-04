@@ -15,14 +15,14 @@ Applies [Basic Image Gallery Extension
 
 ## Requirements
 
--   Silverstripe 5
+-   Silverstripe 6
 
 ## Installation Instructions
 
 1. Install:
    
     ```
-    composer require purplespider/basic-galleries ^3
+    composer require purplespider/basic-galleries ^4
     ```
 
 2. Visit yoursite.com/dev/build to rebuild the database.
@@ -68,6 +68,7 @@ This uses [Delete Asset If Unused Extension](https://github.com/purplespider/ass
 -   1.\* = Silverstripe 4
 -   2.\* = Silverstripe 4 (Uses newer version of `PhotoGalleryExtension` with a polymorphic relation, so upgrading from 1 to 2 will break existing galleries.)
 -   3.\* = Silverstripe 5
+-   4.\* = Silverstripe 6
 
 ## Upgrade Notes
 
@@ -85,3 +86,7 @@ This uses [Delete Asset If Unused Extension](https://github.com/purplespider/ass
 ## to v3 (Silverstripe 5)
 
 -   Nothing extra required, just change version to `^3`.
+
+## to v4 (Silverstripe 6)
+
+-   Nothing extra required, just change version to `^4`.
