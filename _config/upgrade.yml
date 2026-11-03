@@ -1,7 +1,7 @@
 ---
 Name: basic-galleries-upgrade
 ---
-SilverStripe\ORM\DatabaseAdmin:
+SilverStripe\Dev\Command\DbBuild:
   classname_value_remapping:
     PhotoGalleryPage: PurpleSpider\BasicGalleries\PhotoGalleryPage
     PhotoGalleryHolder: PurpleSpider\BasicGalleries\PhotoGalleryHolder

@@ -81,7 +81,8 @@ This uses [Delete Asset If Unused Extension](https://github.com/purplespider/ass
 ## to v2 or higher (individual page and elemental relations changed to a single polymorphic relation)
 
 -   Complete "To v1" upgrade instructions, inc `dev/build`
--   Run `/dev/tasks/upgrade-basic-galleries` script to update database for existing galleries.
+-   Run the `upgrade-basic-galleries` task to update database for existing galleries. On Silverstripe 6 that's `sake tasks:upgrade-basic-galleries`, or visit `/dev/tasks/upgrade-basic-galleries`.
+-   Until the task has run, existing galleries render empty with no error. It's safe to re-run.
 
 ## to v3 (Silverstripe 5)
 
@@ -89,4 +90,5 @@ This uses [Delete Asset If Unused Extension](https://github.com/purplespider/ass
 
 ## to v4 (Silverstripe 6)
 
--   Nothing extra required, just change version to `^4`.
+-   From v2 or v3, nothing extra required, just change version to `^4`.
+-   From v1, also follow the "to v2" notes above, as those database changes still need to happen: `sake db:build --flush`, then `sake tasks:upgrade-basic-galleries`.
