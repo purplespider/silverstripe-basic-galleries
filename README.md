@@ -27,7 +27,7 @@ Applies [Basic Image Gallery Extension
 
 2. Visit yoursite.com/dev/build to rebuild the database.
 3. Log in the CMS, and create a new Photo Gallery Holder page.
-4. You can then create Photo Gallery Pages underneath this holder.
+4. On the holder's Photo Galleries tab, click "Add new Image Gallery". Galleries are managed from this tab, using [Lumberjack](https://github.com/silverstripe/silverstripe-lumberjack), rather than appearing in the site tree.
 5. On a Photo Gallery Page, click on the Image Gallery tab, then click Bulk Upload to add images.
 
 ## Screenshot
@@ -45,6 +45,19 @@ extensions: - PurpleSpider\BasicGalleries\PhotoGalleryExtension
 gallery-title: Image Gallery
 gallery-cms-tab: Main
 
+```
+
+### Keep Galleries in the Site Tree
+
+To list galleries in the site tree instead of on the holder's Photo Galleries tab:
+
+```yml
+---
+Name: custom-basic-galleries
+After: basic-galleries
+---
+PurpleSpider\BasicGalleries\PhotoGalleryPage:
+    show_in_sitetree: true
 ```
 
 ### Automatically Delete Image Files
@@ -92,3 +105,8 @@ This uses [Delete Asset If Unused Extension](https://github.com/purplespider/ass
 
 -   From v2 or v3, nothing extra required, just change version to `^4`.
 -   From v1, also follow the "to v2" notes above, as those database changes still need to happen: `sake db:build --flush`, then `sake tasks:upgrade-basic-galleries`.
+
+## to v4.1
+
+-   Galleries move from the site tree to a Photo Galleries tab on their holder, which has an "Add new Image Gallery" button. No database changes. See "Keep Galleries in the Site Tree" to opt out.
+-   A site that registers `PurpleSpider\BasicGalleryExtension\CustomLumberjack` on the holder itself can remove that, though leaving it does no harm.

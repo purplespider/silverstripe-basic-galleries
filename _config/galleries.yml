@@ -1,6 +1,9 @@
 ---
 Name: basic-galleries
 ---
+PurpleSpider\BasicGalleries\PhotoGalleryHolder:
+  extensions:
+    - PurpleSpider\BasicGalleryExtension\CustomLumberjack
 PurpleSpider\BasicGalleries\PhotoGalleryPage:
   show_in_sitetree: false
   extensions:

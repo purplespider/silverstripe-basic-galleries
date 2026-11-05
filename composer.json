@@ -15,7 +15,7 @@
 	"require": {
 		"silverstripe/framework": "^6",
 		"silverstripe/cms": "^6",
-		"purplespider/silverstripe-basic-gallery-extension": "^5"
+		"purplespider/silverstripe-basic-gallery-extension": "^5.1.2"
 	},
 	"extra": {
 		"expose": [
